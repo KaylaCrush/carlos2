@@ -8,9 +8,6 @@ pygame.init()
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 pygame.display.set_caption("Player Sprite Example")
 
-import spritesheet
-
-import os
 
 from background import *
 from player import *
@@ -33,16 +30,17 @@ while running:
         if event.type == pygame.QUIT:
             running = False
 
-    #
+    # Update
     bg.update()
     all_sprites.update()
 
 
     # Draw
-    screen.fill((255, 255, 255))
+    # screen.fill((255, 255, 255))
 
     bg.draw(screen)
     all_sprites.draw(screen)
+
     pygame.display.flip()
 
     # Cap the frame rate
