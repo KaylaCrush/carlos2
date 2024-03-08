@@ -8,7 +8,6 @@ pygame.init()
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 pygame.display.set_caption("Player Sprite Example")
 
-
 from background import *
 from player import *
 from floortile import *
@@ -26,6 +25,7 @@ all_sprites.add(player)
 floor_tile = FloorTile(5,500)
 all_sprites.add(floor_tile)
 floor_tiles.add(floor_tile)
+
 # Main loop
 running = True
 clock = pygame.time.Clock()
@@ -47,9 +47,6 @@ while running:
     if keys[pygame.K_SPACE]:
         player.jump(floor_tiles)
 
-
-
-
     # Update
     bg.update()
     all_sprites.update()
@@ -59,10 +56,7 @@ while running:
         player.rect.bottom = hits[0].rect.top
         player.vel_y = 0
 
-
     # Draw
-    # screen.fill((255, 255, 255))
-
     bg.draw(screen)
     all_sprites.draw(screen)
 
@@ -72,4 +66,3 @@ while running:
     clock.tick(60)
 
 pygame.quit()
-

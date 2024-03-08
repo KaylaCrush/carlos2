@@ -13,7 +13,7 @@ class Player(pygame.sprite.Sprite):
         self.scale = scale
         self.load_animations()
         self.image = self.animations['stand']
-        self.rect = self.image.get_rect()
+        self.rect = self.image.get_rect().inflate(-20, 0)
         self.rect.center = (x, y)  # Initial position
         self.speed = 2
         self.walk_index = 0

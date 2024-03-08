@@ -16,7 +16,7 @@ class Para_BG(pygame.sprite.Group):
         raw_bg = [pygame.image.load(f"assets/bg/bg_{i}.png") for i in range(0,5)]
         self.bg_imgs = [pygame.transform.scale_by(pic, scale) for pic in raw_bg]
         self.bg_widths = [pic.get_width() for pic in self.bg_imgs]
-        self.parallax_factor = 4
+        self.parallax_factor = 1
         self.create_background_tiles()
 
     def create_background_tiles(self):
