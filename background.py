@@ -26,7 +26,6 @@ class Para_BG(pygame.sprite.Group):
                 self.add(BackgroundTile(image, image.get_width(), 0, i*self.parallax_factor))
 
     def update(self):
-
         for sprite in self.sprites():
             sprite.rect.x -= sprite.speed
             if sprite.rect.right <= 0:

@@ -13,11 +13,14 @@ class Player(pygame.sprite.Sprite):
         self.scale = scale
         self.load_animations()
         self.image = self.animations['stand']
-        self.rect = self.image.get_rect().inflate(-20, 0)
+        self.rect = self.image.get_rect()
         self.rect.center = (x, y)  # Initial position
         self.speed = 2
         self.walk_index = 0
         self.vel_y = 0
+
+    def relocate(self, pos):
+        self.rect.center = pos
 
     def load_animations(self):
         self.animations['walk_right'] = [sprite_sheet.get_image(11, i, self.scale, self.color) for i in range(9)]
@@ -28,13 +31,17 @@ class Player(pygame.sprite.Sprite):
         self.animations['stand'] = sprite_sheet.get_image(2, 0, self.scale, self.color)
 
     def update(self):
-        self.vel_y += GRAVITY
+        if self.vel_y < MAX_VELOCITY:
+            self.vel_y += GRAVITY
         self.rect.y += self.vel_y
 
         if self.rect.left < 0:
             self.rect.left = 0
         if self.rect.right > SCREEN_WIDTH:
             self.rect.right = SCREEN_WIDTH
+
+        if self.rect.top > SCREEN_HEIGHT:
+            self.rect.center = (100,100)
 
     def jump(self, floor_tiles):
         self.rect.y += 2
